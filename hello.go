@@ -17,5 +17,6 @@ func main() {
 	fmt.Println(name);
 	fmt.Println(name2);
 	fmt.Println(a, b);
-	fmt.Println("PI: ", pi)
+	fmt.Println("PI: ", PI)
+	fmt.Printf("name is %v with type %T", name, name);
 }
