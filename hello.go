@@ -5,16 +5,17 @@ import (
 	"fmt"
 )
 
-const PI = 3.14;
+const PI = 3.14
 
-var name = "Mario";
-var name2 string = "Luigi";
-var a, b = 1, "peach";
+var name = "Mario"
+var name2 string = "Luigi"
+var a, b = 1, "peach"
 
-var ages = [2]int{2, 5}
+// partial array initial
+var ages = [5]int{2: 5, 4: 9}
 
 // main function
 func main() {
-	fmt.Println(ages);
-	fmt.Println(ages[0]);
+	fmt.Println(ages)
+	fmt.Println(ages[0])
 }
