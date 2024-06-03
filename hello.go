@@ -11,12 +11,10 @@ var name = "Mario";
 var name2 string = "Luigi";
 var a, b = 1, "peach";
 
+var ages = [2]int{2, 5}
+
 // main function
 func main() {
-	fmt.Println("hello world");
-	fmt.Println(name);
-	fmt.Println(name2);
-	fmt.Println(a, b);
-	fmt.Println("PI: ", PI)
-	fmt.Printf("name is %v with type %T", name, name);
+	fmt.Println(ages);
+	fmt.Println(ages[0]);
 }
