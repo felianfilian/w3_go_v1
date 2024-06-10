@@ -1,21 +1,72 @@
 package main
 
-// imports
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
-const PI = 3.14
+type Vocabulary struct {
+	Word    string
+	Meaning string
+}
 
-var name = "Mario"
-var name2 string = "Luigi"
-var a, b = 1, "peach"
-
-// partial array initial
-var ages = [5]int{2: 5, 4: 9}
-
-// main function
 func main() {
-	fmt.Println(ages)
-	fmt.Println(ages[0])
+	var vocabularyList []Vocabulary
+	scanner := bufio.NewScanner(os.Stdin)
+
+	fmt.Println("Welcome to the Vocabulary Trainer!")
+	for {
+		fmt.Println("1. Add a new word")
+		fmt.Println("2. Quiz me")
+		fmt.Println("3. Exit")
+		fmt.Print("Choose an option: ")
+
+		scanner.Scan()
+		choice := scanner.Text()
+
+		switch choice {
+		case "1":
+			fmt.Print("Enter the word: ")
+			scanner.Scan()
+			word := scanner.Text()
+
+			fmt.Print("Enter the meaning: ")
+			scanner.Scan()
+			meaning := scanner.Text()
+
+			vocabularyList = append(vocabularyList, Vocabulary{Word: word, Meaning: meaning})
+			fmt.Println("Word added successfully!")
+
+		case "2":
+			if len(vocabularyList) == 0 {
+				fmt.Println("No words to quiz. Add some words first.")
+				continue
+			}
+
+			fmt.Println("Starting the quiz...")
+			correctCount := 0
+			for _, vocab := range vocabularyList {
+				fmt.Printf("What is the meaning of '%s'? ", vocab.Word)
+				scanner.Scan()
+				answer := scanner.Text()
+
+				if strings.EqualFold(answer, vocab.Meaning) {
+					fmt.Println("Correct!")
+					correctCount++
+				} else {
+					fmt.Printf("Incorrect. The correct meaning is '%s'.\n", vocab.Meaning)
+				}
+			}
+			fmt.Printf("You got %d out of %d correct.\n", correctCount, len(vocabularyList))
+
+		case "3":
+			fmt.Println("Exiting the Vocabulary Trainer. Goodbye!")
+			return
+
+		default:
+			fmt.Println("Invalid choice. Please try again.")
+		}
+	}
 }
