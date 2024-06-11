@@ -14,6 +14,9 @@ type Vocabulary struct {
 
 func main() {
 	var vocabularyList []Vocabulary
+	vocabularyList = append(vocabularyList, Vocabulary{Word: "fish", Meaning: "Fisch"})
+	vocabularyList = append(vocabularyList, Vocabulary{Word: "tank", Meaning: "Panzer"})
+	vocabularyList = append(vocabularyList, Vocabulary{Word: "flower", Meaning: "Blume"})
 	scanner := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Welcome to the Vocabulary Trainer!")
